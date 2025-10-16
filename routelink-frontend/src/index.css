@@ -1,0 +1,42 @@
+@import "tailwindcss";
+
+/* Base layout (global) */
+@layer base {
+  html, body, #root { height: 100%; }
+  body {
+    @apply text-gray-900 antialiased;
+    /* soft neutral background + subtle gradients */
+    background:
+      radial-gradient(1200px 600px at 10% -10%, rgba(0,0,0,.04), transparent 60%),
+      radial-gradient(1000px 500px at 110% 0%, rgba(0,0,0,.05), transparent 60%),
+      #f8fafc;
+    background-attachment: fixed, fixed, fixed;
+  }
+}
+
+/* Reusable utilities/components */
+@layer utilities {
+  /* full-page section with hero image (put image at /public/bg.webp or change the url) */
+  .page {
+    @apply min-h-dvh flex flex-col;
+    background-image: url('/bg.webp'); /* or '/assets/bg.webp' if you place it in /public/assets/bg.webp */
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+  }
+
+  .container-narrow { @apply mx-auto w-full max-w-5xl px-4 py-6; }
+
+  /* glass panel */
+  .glass { @apply bg-white/80 backdrop-blur border border-black/5 shadow-sm rounded-2xl; }
+
+  /* card (expand utilities inline; Tailwind v4 cannot @apply custom classes) */
+  .card  { @apply bg-white/80 backdrop-blur border border-black/5 shadow-sm rounded-2xl p-5; }
+
+  .btn         { @apply inline-flex items-center gap-2 px-3 py-1.5 rounded-lg border border-black/10 hover:bg-black/5; }
+  .btn-primary { @apply inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-amber-500 text-white hover:bg-amber-600; }
+  .btn-ghost   { @apply inline-flex items-center gap-2 px-3 py-1.5 rounded-lg hover:bg-black/5; }
+  .chip        { @apply inline-flex items-center px-2 py-0.5 rounded-md text-xs bg-black/5; }
+  .input { @apply w-full rounded-lg border border-black/10 bg-white/80 px-3 py-2; }
+
+}
